@@ -1,0 +1,25 @@
+.top-bar{
+    padding: 15px;
+    background-color: #59C9A5;
+    color: #2e2e2e;
+}
+
+.navigation-bar{
+    border-bottom: 1px solid rgba(63, 63, 63, 0.623);
+    padding: 25px 0;
+    background-color: #fff;
+    text-align: center;
+
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    a:not(:last-child){
+        margin-right: 10px;
+    }
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
