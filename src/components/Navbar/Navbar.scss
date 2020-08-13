@@ -1,0 +1,19 @@
+.top-bar{
+    padding: 20px;
+    background-color: #59C9A5;
+    text-align: left;
+}
+
+.navigation-bar{
+    border-bottom: 1px solid rgb(36, 36, 36);
+    padding: 20px 0;
+    background-color: #fff;
+
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    a:not(:last-child){
+        margin-right: 10px;
+    }
+}
