@@ -1,0 +1,12 @@
+.footer{
+    padding: 40px 0;
+    height: 220px;
+    background-color: #274C77;
+    color: #ece9f0;
+    
+     
+    &-layout{
+        display: flex;
+        justify-content: space-between;
+    }
+}
