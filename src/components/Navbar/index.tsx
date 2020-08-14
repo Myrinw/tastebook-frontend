@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.scss';
 
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
@@ -18,9 +18,9 @@ export default function Navbar() {
 
         </div>
         <div className="navigation-bar">
-            <Link to="/">Home</Link>
-            <Link to="/">Food-forum</Link>
-            <Link to="/">Food-matcher</Link>
+            <NavLink exact activeClassName="active-link" to="/">Home</NavLink>
+            <NavLink activeClassName="active-link" to="/forum">Food-forum</NavLink>
+            <NavLink activeClassName="active-link" to="/matching">Food-matcher</NavLink>
         </div>
     </div>
 }

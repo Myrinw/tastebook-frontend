@@ -3,6 +3,9 @@ import './App.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Forum from './pages/Forum';
+import Matching from './pages/Matching';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -14,8 +17,9 @@ function App() {
     <div className="App">
       <Navbar />
       <Switch>
-        <Route exact path="/" component={home} />
-        <Route path="/forum" component={forum} />
+        <Route path="/forum" component={Forum} />
+        <Route path="/matching" component={Matching} />
+        <Route exact path="/" component={Home} />
       </Switch>
       <Footer />
     </div>
