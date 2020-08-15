@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.scss';
 
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,7 +12,7 @@ export default function Navbar() {
             <div className="container">
                 <div className="space-between">
                     <h2>Tastebook</h2>
-                    <FontAwesomeIcon icon={faUser} size="2x" />
+                    <Link to="/me"><FontAwesomeIcon icon={faUser} size="2x" /></Link>
                 </div>
             </div>
 
