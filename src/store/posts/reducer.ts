@@ -1,14 +1,20 @@
-const initialstate: { loading: boolean; posts: {}[] } = {
-    loading: false,
-    posts: []
+const initialstate: { loading: boolean; postArray: {}[] } = {
+    loading: true,
+    postArray: []
 }
 
-export function postReducer(state = initialstate, action: any) {
+export default function postReducer(state = initialstate, action: any) {
     switch (action.type) {
-        case "addPosts": {
+        case "loadingPosts": {
             return {
                 ...state,
-                posts: action.payload
+                loading: true
+            }
+        }
+        case "addPosts": {
+            return {
+                loading: false,
+                postArray: action.payload
             }
         }
         default: {
