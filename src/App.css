@@ -16,3 +16,9 @@ body{
 .center{
   text-align: center;
 }
+.margin-vert{
+  margin: 60px 0;
+}
+.margin-vert-sm{
+  margin: 10px 0;
+}

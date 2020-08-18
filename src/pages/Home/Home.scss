@@ -1,0 +1,29 @@
+.slide{
+    height: 350px;
+    text-align: center;
+    background-color: rgb(109, 153, 155);
+    position: relative;
+    background-image: url('../../images/dining.jpg');
+    background-size: cover;
+}
+
+.btn-center{
+    position: absolute;
+    top: 40%;
+    width: 80%;
+    text-align: center;
+}
+
+.auto{
+    margin: 0 auto;
+}
+
+.post-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px;
+
+}
+.hero-title{
+    color: #fff;
+}
