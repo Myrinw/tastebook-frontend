@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import './Home.scss';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Button, Box } from '@material-ui/core';
+import { Button, Box } from '@material-ui/core';
 import { fetchPosts } from '../../store/posts/action';
 import { postState } from '../../store/posts/selector'
 

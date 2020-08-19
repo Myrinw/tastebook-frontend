@@ -18,7 +18,13 @@ export const fetchPosts = function () {
     return async function (dispatch: any, getState: any) {
         dispatch(loadPosts());
         const posts = await axios.get(`${API_URL}/posts`);
-        dispatch(storePosts(posts.data));
+        console.log(posts.data);
+        try {
+            dispatch(storePosts(posts.data));
+
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 

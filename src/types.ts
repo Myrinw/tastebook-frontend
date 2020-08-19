@@ -1,12 +1,19 @@
-export type FetchPosts = {
+export interface FetchPosts {
     posts: {
         loading: boolean;
         postArray: {
-            user: string;
+            id: number
             title: string;
-            picture?: string;
+            image?: string;
             text: string;
 
+            user: {
+                picture: string;
+                username: string;
+            };
+            likes: {
+                id: number
+            }[]
         }[];
     }
 }
@@ -17,3 +24,12 @@ export interface PostValues {
     picture?: string;
     text?: string;
 }[]
+
+export interface PostCard {
+
+    user: { picture: string; username: string; };
+    postImg?: string;
+    title: string;
+    text: string;
+    likes?: { id: number }[];
+}
