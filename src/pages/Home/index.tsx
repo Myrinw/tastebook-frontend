@@ -19,6 +19,8 @@ export default function Home() {
         dispatch(fetchPosts());
     }, []);
 
+    const maxPosts = postSelect.postArray.filter((e, i) => i < 4)
+
     var items: { name: string; description: string }[] = [
         {
             name: "See our forum with all kinds of food-related threads!",
@@ -70,7 +72,7 @@ export default function Home() {
             <h2 className="center">Recent posts:</h2>
 
             <div className="post-row">
-                {postSelect.loading ? <div>Loading...</div> : postSelect.postArray.map(post => <PostPreview key={post.id} picture={post.user.picture} text={post.text} title={post.title} user={post.user.username} />)}
+                {postSelect.loading ? <div>Loading...</div> : maxPosts.map(post => <PostPreview id={post.id} key={post.id} picture={post.user.picture} text={post.text} title={post.title} user={post.user.username} />)}
             </div>
 
         </div>

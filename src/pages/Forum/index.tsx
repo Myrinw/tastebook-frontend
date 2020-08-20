@@ -12,6 +12,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Post from '../../components/Post';
 import { fetchPosts, PostAPost } from '../../store/posts/action';
 import { postState } from '../../store/posts/selector';
+import { FetchPosts, PostsArray } from '../../types';
 
 
 
@@ -26,6 +27,7 @@ export default function Forum() {
     const [postText, set_postText] = useState('');
     const [url, set_url] = useState('');
     const [open, setOpen] = useState(false);
+    const [postSort, set_postSort] = useState<PostsArray>();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -42,9 +44,28 @@ export default function Forum() {
 
     useEffect(
         function () {
-            dispatch(fetchPosts())
+            dispatch(fetchPosts());
+            if (!posts.loading) {
+                set_postSort(postsByDate);
+            }
         }, [posts.postSuccess]
-    )
+    );
+
+    const postsByDate: any = posts.postArray.sort((a, b) => {
+        return +new Date(b.createdAt) - +new Date(a.createdAt)
+    })
+    const postsByLikes: any = posts.postArray.sort((a, b) => b.likes.length - a.likes.length);
+    if (posts.loading === false) {
+        console.log(postsByDate);
+    }
+
+    function setSort(e: any) {
+        if (e.target.value === "likes") {
+            set_postSort(postsByLikes);
+        } else if (e.target.value === "recent") {
+            set_postSort(postsByDate);
+        }
+    }
 
     return <div className="forum">
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -64,7 +85,6 @@ export default function Forum() {
                     type="text"
                     variant="outlined"
                     className="margin-vert-xs"
-
                     fullWidth
                 />
 
@@ -106,14 +126,15 @@ export default function Forum() {
         <div className="posts">
             <div className="sort-row">
                 <h3>Category:</h3>
-                <select>
-                    <option>blabls</option>
+                <select onChange={setSort}>
+                    <option value="recent">most recent</option>
+                    <option value="likes">most likes</option>
                 </select>
                 <Button variant="contained" color="primary" onClick={handleClickOpen}>
                     Create a post!
                 </Button>
             </div>
-            {posts.loading ? <div>LOADING..</div> : posts.postArray.map((post) => <Post key={post.id} title={post.title} text={post.text} likes={post.likes} postImg={post.image} user={post.user} />)}
+            {posts.loading ? <div>LOADING..</div> : postsByDate.map((post: any) => <Post id={post.id} key={post.id} title={post.title} text={post.text} likes={post.likes} postImg={post.image} user={post.user} />)}
 
         </div>
     </div>

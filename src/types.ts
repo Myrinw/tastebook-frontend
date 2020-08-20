@@ -1,5 +1,6 @@
 export interface FetchPosts {
     posts: {
+        id: number;
         loading: boolean;
         postSuccess: boolean;
         postArray: {
@@ -7,6 +8,7 @@ export interface FetchPosts {
             title: string;
             image?: string;
             text: string;
+            createdAt: string;
 
             user: {
                 picture: string;
@@ -20,7 +22,7 @@ export interface FetchPosts {
 }
 
 export interface PostValues {
-
+    id: number;
     user: string;
     title: string;
     picture?: string;
@@ -34,4 +36,23 @@ export interface PostCard {
     title: string;
     text: string;
     likes?: { id: number }[];
+    id: number;
 }
+
+export type PostsArray = {
+
+    id: number
+    title: string;
+    image?: string;
+    text: string;
+    createdAt: string;
+
+    user: {
+        picture: string;
+        username: string;
+    };
+    likes: {
+        id: number
+    }[]
+
+}[] | undefined

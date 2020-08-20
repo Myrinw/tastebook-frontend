@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import './Post.scss';
 
 import { Card, CardMedia, CardContent, CardActionArea, CardActions, Button } from '@material-ui/core';
@@ -7,9 +8,14 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 import { PostCard } from '../../types';
 
+function toDetails() {
+    window.location.href = "/ww"
+
+}
+
 export default function Post(props: PostCard) {
 
-    return <div className="post">
+    return <div className="post" onClick={toDetails}>
         <Card>
             <CardContent>
                 <div className="card-top">
