@@ -8,12 +8,13 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 import { PostCard } from '../../types';
 
-function toDetails() {
-    window.location.href = "/ww"
-
-}
 
 export default function Post(props: PostCard) {
+
+    function toDetails() {
+        window.location.href = `/forum/${props.id}`
+
+    }
 
     return <div className="post" onClick={toDetails}>
         <Card>

@@ -75,3 +75,12 @@ export function PostAPost(title: string, text: string, url: string) {
 
     }
 }
+
+// export const fetchSinglePost = function(id:number){
+//     return async (dispatch:any) => {
+//         try{
+//             const post = await axios.get(`${API_URL}/posts/${id}`);
+
+//         }
+//     }
+// }

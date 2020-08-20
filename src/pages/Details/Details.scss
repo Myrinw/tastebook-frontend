@@ -1,0 +1,12 @@
+.details{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-top: 40px;
+    padding: 30px;
+    
+}
+.pf{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

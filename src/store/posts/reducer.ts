@@ -14,8 +14,9 @@ export default function postReducer(state = initialstate, action: any) {
         }
         case "addPosts": {
             return {
+                ...state,
                 loading: false,
-                postArray: action.payload
+                postArray: [...action.payload]
             }
         }
         case "postedSuccesfull": {
