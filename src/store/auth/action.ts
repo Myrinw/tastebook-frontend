@@ -8,6 +8,13 @@ function storeLogin(token: string) {
     }
 }
 
+function storeMe(me: {}) {
+    return {
+        type: "usersProfile",
+        payload: me
+    }
+}
+
 export const login = function (email: string, password: string) {
     return async function (dispatch: any, getState: any) {
         console.log('inside thunk');
@@ -17,8 +24,13 @@ export const login = function (email: string, password: string) {
                 email,
                 password
             });
+            const jwt = loginRequest.data.jwt
             localStorage.setItem('token', loginRequest.data.jwt);
-            dispatch(storeLogin(loginRequest.data.jwt))
+            dispatch(storeLogin(loginRequest.data.jwt));
+            const me = await axios.post(`${API_URL}/users/me`, {
+                token: jwt,
+            });
+            dispatch(storeMe(me.data));
 
         } catch (e) {
             console.log(e);

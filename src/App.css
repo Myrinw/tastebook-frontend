@@ -22,3 +22,6 @@ body{
 .margin-vert-sm{
   margin: 10px 0;
 }
+.margin-vert-xs{
+  margin: 50px 0;
+}

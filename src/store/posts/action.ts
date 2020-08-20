@@ -34,3 +34,44 @@ export const fetch3posts = function () {
 
     }
 }
+
+function postAction() {
+    return {
+        type: "postedSuccesfull",
+    }
+}
+
+function postFailed() {
+    return {
+        type: "postedFail"
+    }
+}
+
+export function PostAPost(title: string, text: string, url: string) {
+    return async function (dispatch: any, getState: any) {
+
+        const token = getState().auth.token;
+        console.log(token);
+        try {
+            const post = await axios.post(`${API_URL}/posts`, {
+                title,
+                text,
+                image: url,
+                userId: getState().auth.me.id,
+            },
+                {
+                    headers: { authorization: `Bearer ${getState().auth.token}` }
+                });
+            console.log(post);
+            if (post) {
+                dispatch(postAction());
+            } else {
+                dispatch(postFailed());
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+}

@@ -1,5 +1,6 @@
-const initialstate: { loading: boolean; postArray: {}[] } = {
+const initialstate: { loading: boolean; postSuccess: boolean; postArray: {}[] } = {
     loading: true,
+    postSuccess: false,
     postArray: []
 }
 
@@ -15,6 +16,18 @@ export default function postReducer(state = initialstate, action: any) {
             return {
                 loading: false,
                 postArray: action.payload
+            }
+        }
+        case "postedSuccesfull": {
+            return {
+                ...state,
+                postSuccess: true
+            }
+        }
+        case "postedFail": {
+            return {
+                ...state,
+                postSuccess: false
             }
         }
         default: {

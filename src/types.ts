@@ -1,6 +1,7 @@
 export interface FetchPosts {
     posts: {
         loading: boolean;
+        postSuccess: boolean;
         postArray: {
             id: number
             title: string;
@@ -19,6 +20,7 @@ export interface FetchPosts {
 }
 
 export interface PostValues {
+
     user: string;
     title: string;
     picture?: string;

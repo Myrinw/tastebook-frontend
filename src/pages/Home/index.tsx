@@ -70,7 +70,7 @@ export default function Home() {
             <h2 className="center">Recent posts:</h2>
 
             <div className="post-row">
-                {postSelect.loading ? <div>Loading...</div> : postSelect.postArray.map(post => <PostPreview picture="picture" text={post.text} title={post.title} user="dd" />)}
+                {postSelect.loading ? <div>Loading...</div> : postSelect.postArray.map(post => <PostPreview key={post.id} picture={post.user.picture} text={post.text} title={post.title} user={post.user.username} />)}
             </div>
 
         </div>
