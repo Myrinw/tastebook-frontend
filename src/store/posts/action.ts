@@ -76,6 +76,26 @@ export function PostAPost(title: string, text: string, url: string) {
     }
 }
 
+export function postComment(comment: string, postId: number) {
+    return async function (dispatch: any, getState: any) {
+        try {
+            const newComment = await axios.post(`${API_URL}/comments`, {
+                text: comment,
+                userId: getState().auth.me.id,
+                postId,
+            },
+                {
+                    headers: {
+                        authorization: `Bearer ${getState().auth.token}`
+                    }
+                });
+            console.log(newComment);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
 // export const fetchSinglePost = function(id:number){
 //     return async (dispatch:any) => {
 //         try{

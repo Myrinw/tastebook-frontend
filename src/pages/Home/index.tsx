@@ -14,12 +14,12 @@ import PostPreview from '../../components/PostPreview';
 export default function Home() {
     const dispatch = useDispatch();
     const postSelect = useSelector(postState);
+
     useEffect(function () {
-        console.log("ohhyyeyeyey")
         dispatch(fetchPosts());
     }, []);
 
-    const maxPosts = postSelect.postArray.filter((e, i) => i < 4)
+    const maxPosts = postSelect.postArray.filter((e, i) => i < 4);
 
     var items: { name: string; description: string; image: string }[] = [
         {
@@ -28,7 +28,7 @@ export default function Home() {
             image: "https://yummyvalley.ca/wp-content/uploads/2017/10/friends-eating-food.jpg"
         },
         {
-            name: "Meet food-friends!",
+            name: "Make food-friends!",
             description: "Hello World!",
             image: "https://www.debic.com/sites/default/files/2020-03/Desserts_32.jpg"
         },
@@ -42,8 +42,6 @@ export default function Home() {
         return (
             <div style={{
                 backgroundImage: `linear-gradient(rgba(104, 104, 104, 0.408), rgba(104, 104, 104, 0.408)), url(${props.item.image})  `
-
-
             }} className="slide">
                 <div className="container">
                     <div className="btn-center">
@@ -55,8 +53,6 @@ export default function Home() {
 
                 </div>
             </div>
-
-
         )
     }
 
@@ -67,7 +63,9 @@ export default function Home() {
                 items.map((item, i) => <Item key={i} item={item} />)
             }
         </Carousel>
+
         <div className="container">
+
             <div className="center margin-vert">
                 <h2 >Welcome to Tastebook!</h2>
                 <p className="margin-vert-sm">Welcome to Tastebook. Tastebook is created for people to connect with eachother based on food-interersts! We have an active forum where users can post all kinds of food-related posts, from recipe idea's, food-reviews, and restaurent experiences! Besides that a user can also use the matcher to find friends who have the same food interests/diet as you do! This way it becomes a lot easier to meat people who are the same food-fanatics as you are. Don't hesitate and sign up already!</p>

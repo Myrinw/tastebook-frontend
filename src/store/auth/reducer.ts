@@ -14,6 +14,7 @@ export default function authReducer(state: State = initialState, action: { type:
     switch (action.type) {
         case ("userLoggedIn"): {
             return {
+                ...state,
                 loggedIn: true,
                 token: action.payload
             }

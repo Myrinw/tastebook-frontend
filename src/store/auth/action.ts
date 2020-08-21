@@ -43,7 +43,16 @@ export const login = function (email: string, password: string) {
 export const loginState = async function (dispatch: any, getState: any) {
     const token = localStorage.getItem('token');
     if (token) {
-        dispatch(storeLogin(token));
+        try {
+            dispatch(storeLogin(token));
+
+            const me = await axios.post(`${API_URL}/users/me`, {
+                token,
+            });
+            dispatch(storeMe(me.data));
+        } catch (e) {
+            console.log(e);
+        }
     }
 
 }

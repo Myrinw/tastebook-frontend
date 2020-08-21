@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Forum.scss';
-import { Button } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 
 import Post from '../../components/Post';
 import { fetchPosts, PostAPost } from '../../store/posts/action';
 import { postState } from '../../store/posts/selector';
 import { FetchPosts, PostsArray } from '../../types';
-
-
-
 
 
 
@@ -27,7 +18,7 @@ export default function Forum() {
     const [postText, set_postText] = useState('');
     const [url, set_url] = useState('');
     const [open, setOpen] = useState(false);
-    const [postSort, set_postSort] = useState<PostsArray>();
+    const [postSort, set_postSort] = useState<boolean>(true);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -45,36 +36,34 @@ export default function Forum() {
     useEffect(
         function () {
             dispatch(fetchPosts());
-            if (!posts.loading) {
-                set_postSort(postsByDate);
-            }
+
         }, [posts.postSuccess]
     );
 
-    const postsByDate: any = posts.postArray.sort((a, b) => {
-        return +new Date(b.createdAt) - +new Date(a.createdAt)
-    })
-    const postsByLikes: any = posts.postArray.sort((a, b) => b.likes.length - a.likes.length);
-    if (posts.loading === false) {
-        console.log(postsByDate);
-    }
 
     function setSort(e: any) {
         if (e.target.value === "likes") {
-            set_postSort(postsByLikes);
+            set_postSort(false);
         } else if (e.target.value === "recent") {
-            set_postSort(postsByDate);
+            set_postSort(true);
         }
     }
+
+    let postOrder;
+    if (postSort) {
+        postOrder = posts.postArray.sort((a, b) => {
+            return +new Date(b.createdAt) - +new Date(a.createdAt)
+        })
+    } else {
+        postOrder = posts.postArray.sort((a, b) => b.likes.length - a.likes.length);
+    }
+
+    console.log(postOrder);
 
     return <div className="forum">
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Create a post!</DialogTitle>
             <DialogContent>
-                {/* <DialogContentText>
-                    To subscribe to this website, please enter your email address here. We will send updates
-                    occasionally.
-          </DialogContentText> */}
                 <TextField
                     value={postTitle}
                     onChange={(e) => set_postTitle(e.target.value)}
@@ -111,7 +100,6 @@ export default function Forum() {
                     type="text"
                     fullWidth
                     variant="outlined"
-
                 />
             </DialogContent>
             <DialogActions>
@@ -123,6 +111,7 @@ export default function Forum() {
           </Button>
             </DialogActions>
         </Dialog>
+
         <div className="posts">
             <div className="sort-row">
                 <h3>Category:</h3>
@@ -134,7 +123,7 @@ export default function Forum() {
                     Create a post!
                 </Button>
             </div>
-            {posts.loading ? <div>LOADING..</div> : postsByDate.map((post: any) => <Post id={post.id} key={post.id} title={post.title} text={post.text} likes={post.likes} postImg={post.image} user={post.user} />)}
+            {posts.loading ? <div>LOADING..</div> : postOrder.map((post) => <Post id={post.id} key={post.id} title={post.title} text={post.text} likes={post.likes} postImg={post.image} user={post.user} />)}
 
         </div>
     </div>
