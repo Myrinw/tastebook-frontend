@@ -58,11 +58,12 @@ export default function Details() {
                     <img className='pf' src={rightPost.user.picture} />
                     <p>{rightPost.user.username}</p>
                     <p>20 followers</p>
+                    <p>{allLike.length} likes</p>
                     <div className="mt-20">
-                        <Button variant={liked ? "contained" : "outlined"} onClick={postLike} color="primary">Like</Button>
+                        <Button className="post-btn" variant={liked ? "contained" : "outlined"} onClick={postLike} color="primary">Like</Button>
                     </div>
                     <div>
-                        <Button variant="outlined" color="primary">Follow +</Button>
+                        <Button className="post-btn" variant="outlined" color="primary">Follow +</Button>
                     </div>
                 </Card>
             </div>

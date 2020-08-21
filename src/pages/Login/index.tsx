@@ -4,6 +4,8 @@ import './Login.scss';
 import { login } from '../../store/auth/action';
 import axios from 'axios';
 
+import { TextField, Button } from '@material-ui/core';
+
 export default function Login() {
     const dispatch = useDispatch();
     const [email, set_email] = useState<string>('');
@@ -23,18 +25,19 @@ export default function Login() {
     }
 
     return <div className="container">
-        <h1 className="center">Please login</h1>
-        <form>
-            <div>
-                <input value={email} onChange={e => set_email(e.target.value)} id="email" type="email" />
-                <label htmlFor="email">email</label>
-            </div>
-            <div>
-                <input value={password} onChange={e => set_password(e.target.value)} id="password" type="text" />
-                <label htmlFor="password">password</label>
-            </div>
+        <div className=" margin-vert">
+            <h1 className="center">Please login</h1>
+            <form className="center">
+                <div className="margin-vert-sm">
+                    <TextField variant="outlined" label="email" value={email} onChange={e => set_email(e.target.value)} id="email" type="email" />
+                </div>
+                <div className="margin-vert-sm">
+                    <TextField variant="outlined" label="password" value={password} onChange={e => set_password(e.target.value)} id="password" type="password" />
+                </div>
 
-            <button onClick={formSubmit} type="submit">Submit</button>
-        </form>
+                <Button color="primary" variant="contained" onClick={formSubmit} type="submit">Submit</Button>
+            </form>
+        </div>
+
     </div>
 }
