@@ -8,14 +8,51 @@ function storeLogin(token: string) {
     }
 }
 
+function storeMe(me: {}) {
+    return {
+        type: "usersProfile",
+        payload: me
+    }
+}
+
 export const login = function (email: string, password: string) {
     return async function (dispatch: any, getState: any) {
-        console.log('inside thunk')
-        const loginRequest: any = await axios.post(`${API_URL}/login`, {
-            email,
-            password
-        });
-        console.log(loginRequest);
-        dispatch(storeLogin(loginRequest.data.jwt))
+        console.log('inside thunk');
+
+        try {
+            const loginRequest: any = await axios.post(`${API_URL}/login`, {
+                email,
+                password
+            });
+            const jwt = loginRequest.data.jwt
+            localStorage.setItem('token', loginRequest.data.jwt);
+            dispatch(storeLogin(loginRequest.data.jwt));
+            const me = await axios.post(`${API_URL}/users/me`, {
+                token: jwt,
+            });
+            dispatch(storeMe(me.data));
+
+        } catch (e) {
+            console.log(e);
+        }
+
+
     }
+}
+
+export const loginState = async function (dispatch: any, getState: any) {
+    const token = localStorage.getItem('token');
+    if (token) {
+        try {
+            dispatch(storeLogin(token));
+
+            const me = await axios.post(`${API_URL}/users/me`, {
+                token,
+            });
+            dispatch(storeMe(me.data));
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
 }

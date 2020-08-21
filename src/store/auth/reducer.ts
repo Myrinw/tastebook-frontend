@@ -1,10 +1,12 @@
 type State = {
     loggedIn: boolean;
+    me: {}
     token: string;
 }
 
 const initialState: State = {
     loggedIn: false,
+    me: {},
     token: "",
 }
 
@@ -12,15 +14,19 @@ export default function authReducer(state: State = initialState, action: { type:
     switch (action.type) {
         case ("userLoggedIn"): {
             return {
+                ...state,
                 loggedIn: true,
                 token: action.payload
             }
         }
-        case ("userLoggedOut"): {
+        case ("usersProfile"): {
             return {
-                loggedIn: false,
-                token: ""
+                ...state,
+                me: action.payload
             }
+        }
+        case ("userLoggedOut"): {
+            return initialState
         }
         default: {
             return state;

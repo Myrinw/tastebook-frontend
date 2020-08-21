@@ -18,7 +18,13 @@ export const fetchPosts = function () {
     return async function (dispatch: any, getState: any) {
         dispatch(loadPosts());
         const posts = await axios.get(`${API_URL}/posts`);
-        dispatch(storePosts(posts.data));
+        console.log(posts.data);
+        try {
+            dispatch(storePosts(posts.data));
+
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 
@@ -28,3 +34,73 @@ export const fetch3posts = function () {
 
     }
 }
+
+function postAction() {
+    return {
+        type: "postedSuccesfull",
+    }
+}
+
+function postFailed() {
+    return {
+        type: "postedFail"
+    }
+}
+
+export function PostAPost(title: string, text: string, url: string) {
+    return async function (dispatch: any, getState: any) {
+
+        const token = getState().auth.token;
+        console.log(token);
+        try {
+            const post = await axios.post(`${API_URL}/posts`, {
+                title,
+                text,
+                image: url,
+                userId: getState().auth.me.id,
+            },
+                {
+                    headers: { authorization: `Bearer ${getState().auth.token}` }
+                });
+            console.log(post);
+            if (post) {
+                dispatch(postAction());
+            } else {
+                dispatch(postFailed());
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+}
+
+export function postComment(comment: string, postId: number) {
+    return async function (dispatch: any, getState: any) {
+        try {
+            const newComment = await axios.post(`${API_URL}/comments`, {
+                text: comment,
+                userId: getState().auth.me.id,
+                postId,
+            },
+                {
+                    headers: {
+                        authorization: `Bearer ${getState().auth.token}`
+                    }
+                });
+            console.log(newComment);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+// export const fetchSinglePost = function(id:number){
+//     return async (dispatch:any) => {
+//         try{
+//             const post = await axios.get(`${API_URL}/posts/${id}`);
+
+//         }
+//     }
+// }
