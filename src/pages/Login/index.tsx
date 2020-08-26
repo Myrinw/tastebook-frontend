@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import './Login.scss';
 import { login } from '../../store/auth/action';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import { TextField, Button } from '@material-ui/core';
 
@@ -37,6 +38,7 @@ export default function Login() {
 
                 <Button color="primary" variant="contained" onClick={formSubmit} type="submit">Submit</Button>
             </form>
+            <Link to="/signup">Or sign up</Link>
         </div>
 
     </div>

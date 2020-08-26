@@ -19,7 +19,7 @@ export default function likesReducer(state = initialState, action: { payload: an
         }
         case "removeLike": {
             const likesArr = [...state.likes];
-            const newArr = likesArr.filter(a => a.postId !== action.payload)
+            const newArr = likesArr.filter(a => a.userId !== action.payload);
             return {
                 ...state,
                 likes: newArr,

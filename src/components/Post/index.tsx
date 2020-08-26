@@ -31,7 +31,7 @@ export default function Post(props: PostCard) {
             <CardActionArea >
                 <CardMedia className="card-media" title="blblb" image={props.postImg} />
             </CardActionArea>
-            <p style={{ paddingLeft: "15px" }}>{props.likes?.length} likes </p>
+            <p style={{ paddingLeft: "15px" }}>{props.likes.length} likes </p>
             <CardActions>
                 <Button color="primary" > <ThumbUpIcon className="thumb" />  Like </Button>
                 <Button color="primary" > <ChatBubbleOutlineIcon /> Comment </Button>

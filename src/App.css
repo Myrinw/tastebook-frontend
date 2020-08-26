@@ -25,3 +25,7 @@ body{
 .margin-vert-xs{
   margin: 50px 0;
 }
+
+.centering{
+  margin: 0 auto;
+}
