@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Login.scss';
 import { login } from '../../store/auth/action';
+import { isLoggedIn } from '../../store/auth/selector';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ import { TextField, Button } from '@material-ui/core';
 
 export default function Login() {
     const dispatch = useDispatch();
+    const loggedIn = useSelector(isLoggedIn);
     const [email, set_email] = useState<string>('');
     const [password, set_password] = useState<string>('');
 
@@ -27,7 +29,7 @@ export default function Login() {
 
     return <div className="container">
         <div className=" margin-vert">
-            <h1 className="center">Please login</h1>
+            <h1 className="center">{!loggedIn ? "Please log in" : "You are logged in!"}</h1>
             <form className="center">
                 <div className="margin-vert-sm">
                     <TextField variant="outlined" label="email" value={email} onChange={e => set_email(e.target.value)} id="email" type="email" />
