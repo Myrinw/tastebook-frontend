@@ -9,13 +9,15 @@ import Forum from './pages/Forum';
 import Matching from './pages/Matching';
 import Login from './pages/Login';
 import Details from './pages/Details';
+import User from './pages/User';
+import Signup from './pages/Singup';
 import { isLoggedIn } from './store/auth/selector';
 import { loginState } from './store/auth/action';
 
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
-const me = () => <div>ME!</div>
+
 
 function App() {
   const dispatch = useDispatch();
@@ -33,9 +35,11 @@ function App() {
       <Switch>
         <Route exact path="/forum" component={Forum} />
         <Route path="/forum/:id" component={Details} />
-        <Route path="/matching" component={Matching} />
-        <Route path="/me" component={loggedIn ? me : Login} />
+        <Route path="/matching" component={loggedIn ? Matching : Login} />
+        <Route path="/me" component={loggedIn ? User : Login} />
+        <Route path='/login' component={Login} />
         <Route exact path="/" component={Home} />
+        <Route path="/signup" component={Signup} />
       </Switch>
       <Footer />
     </div>

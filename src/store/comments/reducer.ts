@@ -4,11 +4,18 @@ const initialState = {
 }
 
 export default function commentsReducer(state = initialState, action) {
-    switch (action.payload) {
+
+    switch (action.type) {
         case "storeComments": {
             return {
                 ...state,
                 comments: action.payload,
+            }
+        }
+        case "storeSingleComment": {
+            return {
+                ...state,
+                comments: [...state.comments, action.payload]
             }
         }
         default: {

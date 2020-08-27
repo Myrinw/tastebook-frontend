@@ -6,8 +6,11 @@ import { Button, Card, CardContent, CardMedia, CardActionArea, TextField } from 
 import './Details.scss';
 import { postState, state } from '../../store/posts/selector';
 import { userId } from '../../store/auth/selector';
-import { fetchPosts, postComment } from '../../store/posts/action';
+import { fetchPosts, } from '../../store/posts/action';
 import { fetchLikes, postALike, removeALike } from '../../store/likes/action';
+import { fetchComments, postComment } from '../../store/comments/action';
+import { allComments } from '../../store/comments/selector'; import { truncate } from 'fs';
+;
 
 export default function Details() {
     type Params = {
@@ -19,6 +22,7 @@ export default function Details() {
     const [commentText, set_commentText] = useState<string>('');
     const post = useSelector(postState);
     const userID = useSelector(userId);
+    const comments = useSelector(allComments);
     const rightPost = post.postArray.find((a: any) => a.id === id);
     const allLike = useSelector(state);
 
@@ -26,8 +30,8 @@ export default function Details() {
     useEffect(
         function () {
             dispatch(fetchPosts());
-            dispatch(fetchLikes());
-
+            dispatch(fetchLikes(id));
+            dispatch(fetchComments(id));
 
         }, []
     )
@@ -39,14 +43,20 @@ export default function Details() {
 
     function postLike() {
         if (liked) {
-            dispatch(removeALike(id))
+            dispatch(removeALike(userID, id))
         } else {
             dispatch(postALike(id));
         }
 
     }
 
-    const liked = allLike.length > 1 ? allLike.find((u) => u.postId === id) : undefined;
+    const liked = allLike.length > 0 ? allLike.find((u: any) => {
+        if (u.postId === id && u.userId === userID) {
+            return true
+        } else {
+            return false
+        }
+    }) : undefined;
 
 
 
@@ -85,7 +95,7 @@ export default function Details() {
             <div>
                 <Card className="comments">
                     <h3>Comments:</h3>
-                    {rightPost.comments.map((comment) => <div className="comment">{comment.text}</div>)}
+                    {comments.map((comment) => <div className="comment">{comment.text}</div>)}
                     <form className="comment-form ">
                         <TextField id="filled-basic" value={commentText} onChange={e => set_commentText(e.target.value)} fullWidth label="Outlined" variant="outlined" />
                         <Button variant="contained" color="primary" onClick={formSubmit} >Send</Button>

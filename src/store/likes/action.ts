@@ -15,13 +15,9 @@ function storeAllLikes(likes) {
     }
 }
 
-export const fetchLikes = () => async (dispatch, getState) => {
+export const fetchLikes = (id) => async (dispatch, getState) => {
     console.log('fetch lieks')
     try {
-        const user = await axios.post(`${API_URL}/users/me`, {
-            token: localStorage.getItem('token')
-        });
-        const id = user.data.id;
         const allLikes = await axios.get(`${API_URL}/likes/${id}`);
         console.log(allLikes);
         dispatch(storeAllLikes(allLikes.data));
@@ -51,15 +47,14 @@ export const postALike = (postId: number) => async (dispatch: any, getState: any
     }
 }
 
-function storeRemovedLike(postId) {
+function storeRemovedLike(userId) {
     return {
         type: "removeLike",
-        payload: postId,
+        payload: userId,
     }
 }
 
-export const removeALike = postId => async (dispatch: any, getState: any) => {
-    dispatch(storeRemovedLike(postId))
+export const removeALike = (userId, postId) => async (dispatch: any, getState: any) => {
     try {
         const deleteLike = await axios.delete(`${API_URL}/likes/delete`, {
             headers: {
@@ -67,10 +62,12 @@ export const removeALike = postId => async (dispatch: any, getState: any) => {
             },
             data: {
                 postId,
-                userId: getState().auth.me.id
+                userId,
             }
         },
         );
+        dispatch(storeRemovedLike(userId));
+
         console.log(deleteLike);
     } catch (e) {
         console.log(e);

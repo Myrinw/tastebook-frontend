@@ -10,3 +10,4 @@ interface UserId {
 }
 export const isLoggedIn = (state: AuthState) => state.auth.loggedIn;
 export const userId = (state: UserId) => state.auth.me.id
+export const me = state => state.auth.me;
