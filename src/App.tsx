@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Details from './pages/Details';
 import User from './pages/User';
 import Signup from './pages/Singup';
+import OtherUser from './pages/OtherUser';
 import { isLoggedIn } from './store/auth/selector';
 import { loginState } from './store/auth/action';
 
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/forum" component={Forum} />
         <Route path="/forum/:id" component={Details} />
         <Route path="/matching" component={loggedIn ? Matching : Login} />
+        <Route path="/user/:id" component={OtherUser} />
         <Route path="/me" component={loggedIn ? User : Login} />
         <Route path='/login' component={Login} />
         <Route exact path="/" component={Home} />

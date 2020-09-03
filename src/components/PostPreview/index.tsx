@@ -1,7 +1,8 @@
 import React from 'react';
 import './PostPreview.scss';
-import { Button } from '@material-ui/core';
+import { Button, } from '@material-ui/core';
 import { PostValues } from '../../types';
+import { Link } from 'react-router-dom';
 
 export default function PostPreview(props: PostValues) {
     return <div className="post-box">
@@ -12,12 +13,12 @@ export default function PostPreview(props: PostValues) {
         <div className="post-text">
             <h3>{props.title}</h3>
             <div className="post-description">
-                <p>
+                <p >
                     {props.text}
                 </p>
             </div>
 
-            <Button color="primary">Read more..</Button>
+            <Link to={`/forum/${props.id}`} className="read-more" color="primary">Read more..</Link>
 
         </div>
     </div>

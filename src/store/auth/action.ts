@@ -69,3 +69,40 @@ export const logOut = async function (dispatch: any) {
     localStorage.removeItem('token');
     dispatch({ type: "userLoggedOut" });
 }
+
+export const signUp = function (email, password, username, bio, picture, restriction, cuisine, alcohol, meal) {
+    return async function (dispatch: any, getState: any) {
+        try {
+            const newUser = await axios.post(`${API_URL}/users`, {
+                email,
+                password,
+                bio,
+                username,
+                picture
+            });
+            const newFood = await axios.post(`${API_URL}/food`, {
+                restriction,
+                cuisine,
+                alcohol,
+                meal,
+                userId: newUser.data.id,
+            });
+            if (newFood) {
+                dispatch({ type: "userSignedUp" })
+            }
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+}
+
+export const fetchSingleUser = (id) => async (dispatch, getState) => {
+    console.log('in thunk')
+    try {
+        const user = await axios.get(`${API_URL}/users/${id}`);
+        dispatch({ type: "storeSingleUser", payload: user.data });
+    } catch (e) {
+        console.log(e)
+    }
+}

@@ -1,7 +1,7 @@
 .post-box{
     background-color: #fff;
     border-radius: 5px;
-    height: 200px;
+    min-height: 200px;
     margin: 60px 0;
     width: 90%;
     -webkit-box-shadow: 1px 2px 5px 0px rgba(66,66,66,0.67);
@@ -9,6 +9,7 @@
     box-shadow: 1px 2px 5px 0px rgba(66,66,66,0.67);
     display: flex;
     padding: 25px;
+    position: relative;
 }
 .pf{
     height: 100px;
@@ -22,6 +23,10 @@
     margin-left: 20px;
 }
 .post-description{
-    height: 75%;
+    height: 60%;
     overflow: hidden;
+}
+.read-more{
+    position: absolute;
+    bottom: 5px;
 }
