@@ -1,0 +1,68 @@
+.profile-picture{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: pink;
+    margin:0 80px ;
+    background-size: cover;
+    background-position: center;
+}
+.profiledata{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+    height: 200px;
+    
+}
+
+.profile-box{
+    width: 80%;
+    margin: 30px auto;
+    min-height: 620px;
+}
+
+.posts-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 50px;
+}
+
+.msg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.name{
+    font-size: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.followers{
+    display: flex;
+    margin: 5px 0;
+    
+}
+.followers div{
+    margin-right: 15px;
+}
+
+.bio{
+    margin-top: 15px;
+    font-weight: bold;
+}
+.sendingMsg{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.food-data{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}

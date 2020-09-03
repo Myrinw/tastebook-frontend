@@ -1,0 +1,46 @@
+.match{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 50px 0;
+}
+.matcher{
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 15px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+
+}
+.plus{
+    height: 80px;
+}
+.match-plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.me-picture{
+  width: 100%;
+  height: 100%;
+}
+
+.center-margin{
+    margin: 0 auto;
+}
+
+.match-btns{
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+
+}
+
+.match-box{
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+.match-btn{
+    margin-bottom: 30px;
+}

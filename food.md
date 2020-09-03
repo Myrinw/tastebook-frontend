@@ -1,0 +1,4 @@
+- restrictions
+- allergies
+- favourite cousine
+- alcohol
