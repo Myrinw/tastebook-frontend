@@ -8,7 +8,6 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 import { PostCard } from '../../types';
 
-
 export default function Post(props: PostCard) {
 
     function toDetails() {
@@ -17,7 +16,7 @@ export default function Post(props: PostCard) {
     }
 
     return <div className="post" onClick={toDetails}>
-        <Card>
+        <Card className="post-card">
             <CardContent>
                 <div className="card-top">
                     <img className="user" src={props.user.picture} />

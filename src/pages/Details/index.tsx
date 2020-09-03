@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Button, Card, CardContent, CardMedia, CardActionArea, TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 
 import './Details.scss';
 import { postState, state } from '../../store/posts/selector';
@@ -65,7 +66,9 @@ export default function Details() {
             <div>
                 <Card className="post-user">
                     <h3>Posted by:</h3>
-                    <img className='pf' src={rightPost.user.picture} />
+                    <Link to={`/user/${rightPost.user.id}`}>
+                        <img className='pf' src={rightPost.user.picture} />
+                    </Link>
                     <p>{rightPost.user.username}</p>
                     <p>20 followers</p>
                     <p>{allLike.length} likes</p>

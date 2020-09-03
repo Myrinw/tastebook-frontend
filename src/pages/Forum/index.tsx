@@ -107,18 +107,21 @@ export default function Forum() {
                     Cancel
           </Button>
                 <Button onClick={formSubmit} color="primary">
-                    Subscribe
+                    Post
           </Button>
             </DialogActions>
         </Dialog>
 
         <div className="posts">
             <div className="sort-row">
-                <h3>Category:</h3>
-                <select onChange={setSort}>
-                    <option value="recent">most recent</option>
-                    <option value="likes">most likes</option>
-                </select>
+                <div>
+                    <h4>Sort:</h4>
+                    <select onChange={setSort}>
+                        <option value="recent">most recent</option>
+                        <option value="likes">most likes</option>
+                    </select>
+                </div>
+
                 <Button variant="contained" color="primary" onClick={handleClickOpen}>
                     Create a post!
                 </Button>
