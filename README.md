@@ -21,6 +21,8 @@ Tastebook is a social network for people to share there food experience. Users c
 - Postgres
 
 ## Paperwork
+- [WireFrame](https://wireframepro.mockflow.com/view/M9671aeffc066dae62ae29a466f65add21596808374083#/page/49d80232ca6f4f5ab6f1c32ff52fa58e)
+- [Database tables](https://dbdiagram.io/d/5f32cc06e1246d54aa2cf7b3)
 
 ## Backend
 [Back-end](https://github.com/Myrinw/tastebook-backend)
