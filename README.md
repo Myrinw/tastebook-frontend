@@ -9,6 +9,7 @@ Tastebook is a social network for people to share there food experience. Users c
 
 ## App-demo
 <img src="https://media.giphy.com/media/ll0IUmuVtw0xoG5vse/giphy.gif" alt="tastebook"/>
+
 ## Technologies
 - React
 - Typescript
