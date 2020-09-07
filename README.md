@@ -13,6 +13,7 @@ Tastebook is a social network for people to share there food experience. Users c
 - React
 - Typescript
 - Scss
+- Material-ui
 - Redux
 - Express
 - Sequelize
