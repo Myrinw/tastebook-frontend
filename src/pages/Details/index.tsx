@@ -9,6 +9,7 @@ import { postState, state } from '../../store/posts/selector';
 import { userId } from '../../store/auth/selector';
 import { fetchPosts, } from '../../store/posts/action';
 import { fetchLikes, postALike, removeALike } from '../../store/likes/action';
+import { following } from '../../store/followers/action';
 import { fetchComments, postComment } from '../../store/comments/action';
 import { allComments } from '../../store/comments/selector'; import { truncate } from 'fs';
 ;
@@ -33,7 +34,7 @@ export default function Details() {
             dispatch(fetchPosts());
             dispatch(fetchLikes(id));
             dispatch(fetchComments(id));
-
+            dispatch(following);
         }, []
     )
 
@@ -58,6 +59,8 @@ export default function Details() {
             return false
         }
     }) : undefined;
+
+    console.log('all followers:',);
 
 
 
