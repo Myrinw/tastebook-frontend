@@ -11,7 +11,7 @@ import { fetchPosts, } from '../../store/posts/action';
 import { following, postFollowing, deleteFollowing } from '../../store/followers/action';
 import { allFollowing } from '../../store/followers/selector';
 import { fetchLikes, postALike, removeALike } from '../../store/likes/action';
-import { fetchComments, postComment } from '../../store/comments/action';
+import { postComment, fetchComments } from '../../store/comments/action';
 import { allComments } from '../../store/comments/selector'; import { truncate } from 'fs';
 ;
 
@@ -73,6 +73,8 @@ export default function Details() {
             return false
         }
     }) : undefined;
+
+    console.log('all followers:',);
 
 
 

@@ -42,6 +42,7 @@ export const login = function (email: string, password: string) {
 
 export const loginState = async function (dispatch: any, getState: any) {
     const token = localStorage.getItem('token');
+    console.log('logging in');
     if (token) {
         try {
 

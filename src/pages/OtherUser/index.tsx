@@ -90,7 +90,7 @@ export default function OtherUser() {
                 />
                 <Button type="submit" onClick={sendMessage} variant="contained" color="primary">Send message</Button>
             </FormControl></div> : ""}
-            {value === 0 ? <div className="posts-grid container">
+            {value === 0 ? <div className="container">
                 {user.id ? user.posts.map(post => <PostPreview id={post.id} text={post.text} user={user.username} picture={user.picture} title={post.title} />) : <h2>Loading</h2>}
             </div> : ""}
 
