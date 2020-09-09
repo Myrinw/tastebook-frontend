@@ -30,12 +30,14 @@ function storeSingleFollowing(userId) {
 }
 
 export const following = async (dispatch, getState) => {
+
     try {
         const allFollowing = await axios.get(`${API_URL}/followers/following/${getState().auth.me.id}`);
         dispatch(storeFollowing(allFollowing.data));
     } catch (e) {
         console.log(e);
     }
+
 }
 
 export const follower = async (dispatch, getState) => {
@@ -56,6 +58,7 @@ export const postFollowing = (userId) => async (dispatch, getState) => {
             headers: { authorization: `Bearer ${getState().auth.token}` }
         });
         dispatch(storeSingleFollowing(newFollower.data));
+
     } catch (e) {
         console.log(e);
     }

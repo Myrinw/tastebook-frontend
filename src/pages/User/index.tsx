@@ -32,7 +32,7 @@ export default function User() {
             </div>}
             <hr />
             <h3 className="center">Posts:</h3>
-            <div className="posts-grid container">
+            <div className="container">
                 {user.id ? user.posts.map(post => <PostPreview id={post.id} text={post.text} user={user.username} picture={user.picture} title={post.title} />) : <h2>Loading</h2>}
             </div>
         </Paper>

@@ -16,10 +16,8 @@ function storeAllLikes(likes) {
 }
 
 export const fetchLikes = (id) => async (dispatch, getState) => {
-    console.log('fetch lieks')
     try {
         const allLikes = await axios.get(`${API_URL}/likes/${id}`);
-        console.log(allLikes);
         dispatch(storeAllLikes(allLikes.data));
     } catch (e) {
         console.log(e);
