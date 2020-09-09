@@ -5,6 +5,15 @@ const initialState = {
 
 export default function followersReducer(state = initialState, action) {
     switch (action.type) {
+
+
+        case "storeFollowers": {
+            return {
+                ...state,
+                followers: [...action.payload]
+            }
+        }
+
         case "storeFollowing": {
             return {
                 ...state,
@@ -12,10 +21,19 @@ export default function followersReducer(state = initialState, action) {
             }
         }
 
-        case "storeFollowers": {
+        case "storeSingleFollowing": {
             return {
                 ...state,
-                followers: [...action.payload]
+                following: [...state.following, action.payload]
+            }
+        }
+
+        case "removeFollowing": {
+            const followingArr = [...state.following];
+            const newArr = followingArr.filter(a => a.userId !== action.payload);
+            return {
+                ...state,
+                following: newArr
             }
         }
 

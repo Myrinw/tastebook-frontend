@@ -8,9 +8,10 @@ import './Details.scss';
 import { postState, state } from '../../store/posts/selector';
 import { userId } from '../../store/auth/selector';
 import { fetchPosts, } from '../../store/posts/action';
+import { following, postFollowing, deleteFollowing } from '../../store/followers/action';
+import { allFollowing } from '../../store/followers/selector';
 import { fetchLikes, postALike, removeALike } from '../../store/likes/action';
-import { following } from '../../store/followers/action';
-import { fetchComments, postComment } from '../../store/comments/action';
+import { postComment, fetchComments } from '../../store/comments/action';
 import { allComments } from '../../store/comments/selector'; import { truncate } from 'fs';
 ;
 
@@ -27,6 +28,7 @@ export default function Details() {
     const comments = useSelector(allComments);
     const rightPost = post.postArray.find((a: any) => a.id === id);
     const allLike = useSelector(state);
+    const follow_ing = useSelector(allFollowing);
 
 
     useEffect(
@@ -51,6 +53,18 @@ export default function Details() {
         }
 
     }
+
+    function postFollow() {
+        if (followed) {
+            dispatch(deleteFollowing(userID));
+        } else {
+            dispatch(postFollowing(userID));
+        }
+    }
+
+    const followed = follow_ing.length > 0 ? follow_ing.find((f: any) => {
+        return f.userId === id
+    }) : undefined;
 
     const liked = allLike.length > 0 ? allLike.find((u: any) => {
         if (u.postId === id && u.userId === userID) {
@@ -79,7 +93,7 @@ export default function Details() {
                         <Button className="post-btn" variant={liked ? "contained" : "outlined"} onClick={postLike} color="primary">Like</Button>
                     </div>
                     <div>
-                        <Button className="post-btn" variant="outlined" color="primary">Follow +</Button>
+                        <Button className="post-btn" variant={followed ? "contained" : "outlined"} onClick={postFollow} color="primary">Follow +</Button>
                     </div>
                 </Card>
             </div>
