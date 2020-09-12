@@ -1,5 +1,5 @@
 .slide{
-    height: 400px;
+    height: 450px;
     text-align: center;
     position: relative;
     background-size: cover;
@@ -21,9 +21,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 240px;
-    padding: 30px 0;
+   grid-gap: 50px;
 
 }
 .hero-title{
     color: #fff;
+    font-size: 60px;
+}
+
+.text-box{
+    padding: 40px;
 }

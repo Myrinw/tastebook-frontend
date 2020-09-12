@@ -1,15 +1,26 @@
 .forum{
-    
     margin-top: 30px;
-  
 }
 .posts{
-    width: 43%;
+    width: 600px;
     margin: 0 auto;
-    margin:auto;
 }
 .sort-row{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.post-text{
+    background-color: initial;
+}
+.posting-card{
+    
+    padding: 25px;
+}
+.text-bar{
+    display: flex;
+    margin: 15px 0;
+}
+.share{
+    color: rgb(98, 98, 98);
 }

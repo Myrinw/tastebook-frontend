@@ -29,3 +29,14 @@ body{
 .centering{
   margin: 0 auto;
 }
+.logo{
+  width: 200px;
+}
+.margin-top-5{
+  margin-top:15px;
+}
+
+.flex-between{
+  display: flex;
+  justify-content:space-between;
+}
