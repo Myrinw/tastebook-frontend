@@ -7,9 +7,9 @@ import { fetchPosts } from '../../store/posts/action';
 import { postState } from '../../store/posts/selector'
 
 import PostPreview from '../../components/PostPreview';
-
-
-
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -62,15 +62,41 @@ export default function Home() {
         </Carousel>
 
         <div className="container">
-            <Card className="text-box center margin-vert">
-                <div>
-                    <h2>Welcome to Tastebook!</h2>
-                    <p className="margin-vert-sm">Welcome to Tastebook. Tastebook is created for people to connect with eachother based on food-interersts! We have an active forum where users can post all kinds of food-related posts, from recipe idea's, food-reviews, and restaurent experiences! Besides that a user can also use the matcher to find friends who have the same food interests/diet as you do! This way it becomes a lot easier to meat people who are the same food-fanatics as you are. Don't hesitate and sign up already!</p>
+
+            <section className="about">
+                <div className="center">
+                    <h2 className="about-title">About Tastebook</h2>
                 </div>
-            </Card>
+
+                <div className="feature-grid margin-vert-xs">
+                    <div className="feature-card">
+                        <QuestionAnswerIcon />
+                        <h3>The forum</h3>
+                        <p>Tastebook has an active forum, where people can communicate with eachother. People can:
+                    </p>
+
+                    -Share your recipe's. There a lots of recipe's that are really nice but never get discovered by other people.
+                    -Restaurent experiences.
+                    -Ask questions
+
+                </div>
+                    <div className="feature-card">
+                        <SupervisorAccountIcon />
+                        <h3>The matching page</h3>
+                        <p>When signing up to tastebook, you get to answer some questions about your food preferences. This is really important because it allows you to match with people who like the exact same food you do!</p>
+                    </div>
+                    <div className="feature-card">
+                        <MailOutlineIcon />
+                        <h3>Send messages</h3>
+                        <p>Just found a user on the forum or matching page, and want to send them a message? You totally can! If you view someone's profile you get too see a message box. As soon as send your message the user recieve an email.</p>
+                    </div>
+                </div>
+            </section>
 
 
-            <h2 className="center">Recent posts:</h2>
+
+
+            <h2 className="center recent">Recent posts</h2>
 
 
             {postSelect.loading ? <div className="center"><CircularProgress className="center" /></div> : <div className="post-row">

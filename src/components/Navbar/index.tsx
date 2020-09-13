@@ -33,8 +33,8 @@ export default function Navbar() {
 
         </div>
         <div className="navigation-bar">
-            <NavLink exact activeClassName="active-link" to="/">Home |</NavLink>
-            <NavLink activeClassName="active-link" to="/forum">Food-forum |</NavLink>
+            <NavLink exact activeClassName="active-link" to="/">Home</NavLink>
+            <NavLink activeClassName="active-link" to="/forum">Food-forum</NavLink>
             <NavLink activeClassName="active-link" to="/matching">Food-matcher</NavLink>
 
         </div>
