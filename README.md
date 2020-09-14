@@ -1,11 +1,7 @@
 # Tastebook | A social network for food-fanatics
-Tastebook is a social network for people to share there food experience. Users can post Recipe's, Restaurant experiences, Send emails to eachother and even find matches wo like the same food they do!
-
-## Table of contents
-- [App-demo](#app-demo)
-- [Used-technologies](#technologies)
-- [Paperwork](#paper-work)
-- [Back-end](#back-end)
+<img src="https://i.ibb.co/ck5v9By/logo-blue.png" alt="logo">
+Tastebook is a social network for people to share their food experiences. Users can post Recipe's, Restaurant experiences, Send messages to eachother and even find matches wo like the same food they do! (work in progress)
+- [Open Tastebook:](https://condescending-poitras-fb0afe.netlify.app/)
 
 ## App-demo
 <img src="https://media.giphy.com/media/ll0IUmuVtw0xoG5vse/giphy.gif" alt="tastebook"/>
@@ -19,10 +15,12 @@ Tastebook is a social network for people to share there food experience. Users c
 - Express
 - Sequelize
 - Postgres
+- NodeMailer
 
 ## Paperwork
 - [WireFrame](https://wireframepro.mockflow.com/view/M9671aeffc066dae62ae29a466f65add21596808374083#/page/49d80232ca6f4f5ab6f1c32ff52fa58e)
 - [Database tables](https://dbdiagram.io/d/5f32cc06e1246d54aa2cf7b3)
+- [User stories](https://github.com/Myrinw/tastebook-frontend/projects/1)
 
 ## Backend
 [Back-end](https://github.com/Myrinw/tastebook-backend)

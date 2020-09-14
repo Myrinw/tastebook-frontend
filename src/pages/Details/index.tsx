@@ -37,7 +37,7 @@ export default function Details() {
             dispatch(fetchLikes(id));
             dispatch(fetchComments(id));
             dispatch(following);
-        }, []
+        }, [dispatch]
     )
 
 
@@ -53,17 +53,16 @@ export default function Details() {
         }
 
     }
-
     function postFollow() {
         if (followed) {
-            dispatch(deleteFollowing(userID));
+            dispatch(deleteFollowing(rightPost.userId));
         } else {
-            dispatch(postFollowing(userID));
+            dispatch(postFollowing(rightPost.userId));
         }
     }
 
     const followed = follow_ing.length > 0 ? follow_ing.find((f: any) => {
-        return f.userId === id
+        return f.userId === userID
     }) : undefined;
 
     const liked = allLike.length > 0 ? allLike.find((u: any) => {
@@ -74,7 +73,7 @@ export default function Details() {
         }
     }) : undefined;
 
-    console.log('all followers:',);
+    console.log('all followers:', follow_ing);
 
 
 

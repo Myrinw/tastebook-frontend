@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Forum.scss';
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
-
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Card, FormControl } from '@material-ui/core';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import ForumIcon from '@material-ui/icons/Forum';
 import Post from '../../components/Post';
 import { fetchPosts, PostAPost } from '../../store/posts/action';
 import { postState } from '../../store/posts/selector';
@@ -114,20 +116,44 @@ export default function Forum() {
 
         <div className="posts">
             <div className="sort-row">
-                <div>
-                    <h4>Sort:</h4>
-                    <select onChange={setSort}>
-                        <option value="recent">most recent</option>
-                        <option value="likes">most likes</option>
-                    </select>
+                <h4>Sort:</h4>
+
+                <select onChange={setSort}>
+                    <option value="recent">most recent</option>
+                    <option value="likes">most likes</option>
+                </select>
+
+
+            </div>
+
+            <Card className="posting-card">
+                <div className="post-overlay" onClick={handleClickOpen}></div>
+                <form className="text-bar">
+                    <TextField
+                        fullWidth
+                        id=" component-disabled"
+                        label="What's up?"
+                        value=""
+                        variant="outlined"
+                        className="post-text"
+                    />
+                    <Button variant="contained" color="primary">Post</Button>
+                </form>
+
+                <div className="flex-between margin-top-5">
+                    <div className="share">Share recipes <ReceiptIcon /></div>
+                    <div className="share">Share experiences <FastfoodIcon /></div>
+                    <div className="share">Share your opinion <ForumIcon /></div>
                 </div>
 
-                <Button variant="contained" color="primary" onClick={handleClickOpen}>
-                    Create a post!
-                </Button>
-            </div>
+
+
+
+            </Card>
+
             {posts.loading ? <div>LOADING..</div> : postOrder.map((post) => <Post id={post.id} key={post.id} title={post.title} text={post.text} likes={post.likes} postImg={post.image} user={post.user} />)}
 
         </div>
+
     </div>
 }

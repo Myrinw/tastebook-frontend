@@ -27,7 +27,7 @@ function App() {
   useEffect(
     function () {
       dispatch(loginState);
-    }, []
+    }, [dispatch]
   );
 
   return (
