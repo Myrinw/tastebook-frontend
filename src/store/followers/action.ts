@@ -17,7 +17,7 @@ function storeFollowers(followers) {
 
 function removeFollowing(userId) {
     return {
-        type: "removeFolowing",
+        type: "removeFollowing",
         payload: userId
     }
 }
@@ -72,7 +72,11 @@ export const deleteFollowing = (userId) => async (dispatch, getState) => {
                 userId,
                 followerId: getState().auth.me.id,
             }
-        })
+        });
+        console.log(deltingFollowing);
+        if (deltingFollowing.status === 200) {
+            dispatch(removeFollowing(userId));
+        }
     } catch (e) {
         console.log(e)
     }

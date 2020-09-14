@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="top-bar">
             <div className="container">
                 <div className="space-between">
-                    <h2>Tastebook</h2>
+                    <img className="logo" src={require('../../images/logo-white.png')} alt="logo" />
                     <div>
                         {loggedIn ? <Link to="#" onClick={loggingOut} > logout</Link> : <Link to="/login">login</Link>}
                         <Link to="/me"><FontAwesomeIcon icon={faUser} size="2x" /></Link>
@@ -33,8 +33,8 @@ export default function Navbar() {
 
         </div>
         <div className="navigation-bar">
-            <NavLink exact activeClassName="active-link" to="/">Home |</NavLink>
-            <NavLink activeClassName="active-link" to="/forum">Food-forum |</NavLink>
+            <NavLink exact activeClassName="active-link" to="/">Home</NavLink>
+            <NavLink activeClassName="active-link" to="/forum">Food-forum</NavLink>
             <NavLink activeClassName="active-link" to="/matching">Food-matcher</NavLink>
 
         </div>
