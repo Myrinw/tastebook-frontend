@@ -45,16 +45,18 @@ export const loginState = async function (dispatch: any, getState: any) {
     console.log('logging in');
     if (token) {
         try {
-
-
             const me = await axios.post(`${API_URL}/users/me`, {
                 token,
             });
-            dispatch(storeLogin(token));
             dispatch(storeMe(me.data));
+            dispatch(storeLogin(token));
+
         } catch (e) {
+            localStorage.removeItem('token');
             console.log(e);
         }
+    } else {
+        return;
     }
 
 }

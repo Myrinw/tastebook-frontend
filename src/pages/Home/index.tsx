@@ -93,15 +93,17 @@ export default function Home() {
                 </div>
             </section>
 
+            <hr />
+
+            <section className="recent">
+                <h2 className="center recent-title">Recent posts</h2>
 
 
+                {postSelect.loading ? <div className="center"><CircularProgress className="center" /></div> : <div className="post-row">
+                    {maxPosts.map(post => <PostPreview id={post.id} key={post.id} picture={post.user.picture} text={post.text} title={post.title} user={post.user.username} />)}
+                </div>}
+            </section>
 
-            <h2 className="center recent">Recent posts</h2>
-
-
-            {postSelect.loading ? <div className="center"><CircularProgress className="center" /></div> : <div className="post-row">
-                {maxPosts.map(post => <PostPreview id={post.id} key={post.id} picture={post.user.picture} text={post.text} title={post.title} user={post.user.username} />)}
-            </div>}
 
 
         </div>

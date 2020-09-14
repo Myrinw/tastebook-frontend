@@ -116,18 +116,18 @@ export default function Forum() {
 
         <div className="posts">
             <div className="sort-row">
-                <div>
+                <h4>Sort:</h4>
 
-                </div>
+                <select onChange={setSort}>
+                    <option value="recent">most recent</option>
+                    <option value="likes">most likes</option>
+                </select>
 
 
             </div>
-            <h4>Sort:</h4>
-            <select onChange={setSort}>
-                <option value="recent">most recent</option>
-                <option value="likes">most likes</option>
-            </select>
-            <Card className="posting-card" onClick={handleClickOpen} >
+
+            <Card className="posting-card">
+                <div className="post-overlay" onClick={handleClickOpen}></div>
                 <form className="text-bar">
                     <TextField
                         fullWidth
