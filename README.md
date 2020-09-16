@@ -4,7 +4,7 @@ Tastebook is a social network for people to share their food experiences. Users 
 - [Open Tastebook:](https://condescending-poitras-fb0afe.netlify.app/)
 
 ## App-demo
-[![Showcase video](https://www.youtube.com/watch?v=PuPee6gmLNc)](https://www.youtube.com/watch?v=PuPee6gmLNc)
+[![Showcase video](https://www.youtube.com/watch?v=PuPee6gmLNc/0.jpg)](https://www.youtube.com/watch?v=PuPee6gmLNc)
 
 ## Technologies
 - React
